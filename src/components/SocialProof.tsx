@@ -1,47 +1,87 @@
 import React from 'react';
-import { Star, Quote } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { NumberRollup } from './NumberRollup';
+import ProofChainPro from './testimonial-chain/ProofChainPro';
 
-const testimonials = [
+const COPYBOOST_STORIES = [
   {
-    author: "Alexandre Dupuis",
-    role: "Fondateur @ ScaleMedia (80k abonnés)",
-    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80",
-    quote: "CopyBoost a divisé mon temps d'écriture par 4. Ce n'est pas un énième prompt ChatGPT générique : le contenu a du fond, du rythme et résonne immédiatement avec ma communauté.",
-    metric: "+145% de trafic organique",
+    image: {
+      pixelHeight: 1104,
+      pixelWidth: 736,
+      src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+      alt: "Sarah Lemoine"
+    },
+    imageUrl: "",
+    logo: null,
+    logoUrl: "",
+    metric: "4x plus de posts LinkedIn",
+    name: "Sarah Lemoine",
+    role: "Fondatrice @ GrowthSprint (B2B SaaS)",
+    quote: "« CopyBoost a transformé notre flux de création : nos posts captent l'attention en 2 secondes sans perdre notre ton authentique. »"
   },
   {
-    author: "Camille Renard",
-    role: "Rédactrice & Ghostwriter B2B",
-    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
-    quote: "La possibilité d'adapter la voix de l'IA aux différents briefs de mes clients est une prouesse technique. Mes clients n'ont jamais vu la différence avec mes écrits originaux.",
-    metric: "12 articles rédigés / semaine",
+    image: {
+      pixelHeight: 1152,
+      pixelWidth: 768,
+      src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+      alt: "Marc-Antoine Vivier"
+    },
+    imageUrl: "",
+    logo: null,
+    logoUrl: "",
+    metric: "+230% de taux de conversion",
+    name: "Marc-Antoine Vivier",
+    role: "Directeur Marketing @ LeadFlow",
+    quote: "« Les accroches et les CTA générés par CopyBoost ont directement boosté l'engagement sur nos pages d'atterrissage. »"
   },
   {
-    author: "Thomas Mercier",
-    role: "Créateur de newsletter & Tech Blogger",
-    avatar: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=200&q=80",
-    quote: "Le module de structure H2/H3 et les accroches virales sont exceptionnels. Je publie deux fois plus régulièrement et mon taux de lecture a explosé.",
-    metric: "4.8 min de temps moyen par article",
+    image: {
+      pixelHeight: 1200,
+      pixelWidth: 1200,
+      src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
+      alt: "Chloé Martinez"
+    },
+    imageUrl: "",
+    logo: null,
+    logoUrl: "",
+    metric: "15 heures sauvées / semaine",
+    name: "Chloé Martinez",
+    role: "Ghostwriter & Créatrice de contenu",
+    quote: "« Je ne commence plus jamais devant une page blanche. La structure d'articles et la déclinaison multicanale sont imbattables. »"
+  },
+  {
+    image: {
+      pixelHeight: 1318,
+      pixelWidth: 736,
+      src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
+      alt: "Julien Besson"
+    },
+    imageUrl: "",
+    logo: null,
+    logoUrl: "",
+    metric: "+68% d'ouverture newsletter",
+    name: "Julien Besson",
+    role: "Auteur @ The AI Dispatch (45k abonnés)",
+    quote: "« L'optimisation des objets d'emails et des hooks a fait décoller la fidélisation de mon audience dès le premier mois. »"
   }
 ];
 
 export const SocialProof: React.FC = () => {
   return (
-    <section id="temoignages" className="py-24 bg-zinc-50/60 border-t border-zinc-100">
+    <section id="temoignages" className="py-24 bg-remoteBg border-t border-remoteBorder overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Titre & métriques de réassurance */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-semibold text-zinc-700 uppercase tracking-wider mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#d2f831]"></span>
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-limeAccent/20 border border-limeAccent/60 text-xs font-semibold text-remoteDark uppercase tracking-wider mb-4">
+            <span className="w-2 h-2 rounded-full bg-remoteDark"></span>
             Preuve sociale & Avis vérifiés
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-zinc-950">
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-remoteDark">
             Adopté par plus de 3 500 créateurs indépendants
           </h2>
-          <p className="mt-4 text-zinc-600 text-lg">
-            Découvrez pourquoi les meilleurs rédacteurs et créateurs de blogs francophones ne jurent que par CopyBoost.
+          <p className="mt-4 text-remoteMuted text-lg">
+            Découvrez pourquoi les meilleurs rédacteurs et créateurs de contenu francophones ne jurent que par CopyBoost.
           </p>
 
           {/* Étoiles de satisfaction */}
@@ -49,47 +89,78 @@ export const SocialProof: React.FC = () => {
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
             ))}
-            <span className="ml-2 text-sm font-bold text-zinc-900">4.9 / 5</span>
-            <span className="text-sm text-zinc-500 font-medium">(sur +620 avis créateurs)</span>
+            <span className="ml-2 text-sm font-bold text-remoteDark">4.9 / 5</span>
+            <span className="text-sm text-remoteMuted font-medium">(sur +620 avis créateurs)</span>
           </div>
         </div>
 
-        {/* Grille des témoignages */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((item, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-3xl p-8 border border-zinc-200/80 shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between relative"
-            >
-              <div>
-                <Quote className="w-8 h-8 text-[#d2f831] mb-4 opacity-80" />
-                <p className="text-zinc-700 leading-relaxed text-base italic">
-                  "{item.quote}"
-                </p>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-zinc-100 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <img
-                    src={item.avatar}
-                    alt={item.author}
-                    className="w-11 h-11 rounded-full object-cover ring-2 ring-zinc-100"
-                  />
-                  <div>
-                    <div className="font-bold text-sm text-zinc-900">{item.author}</div>
-                    <div className="text-xs text-zinc-500">{item.role}</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Badge résultat */}
-              <div className="mt-4 inline-block self-start">
-                <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-[#d2f831]/30 text-zinc-900">
-                  {item.metric}
-                </span>
-              </div>
-            </div>
-          ))}
+        {/* Module carrousel immersif remplaçant les cartes statiques */}
+        <div className="w-full flex justify-center items-center my-6">
+          <div className="w-full max-w-[1240px] h-[520px] sm:h-[560px]">
+            <ProofChainPro
+              stories={COPYBOOST_STORIES}
+              panelWidth={760}
+              panelHeight={480}
+              imageShare={0.42}
+              imageOnRight={true}
+              sideCount={2}
+              sideWidth={180}
+              sideHeightRatio={0.62}
+              taper={0.72}
+              bridgeGap={24}
+              frameInset={14}
+              cornerRadius={32}
+              showLogo={false}
+              autoPlay={true}
+              interval={4.5}
+              pauseOnHover={true}
+              glide={1.2}
+              allowDrag={true}
+              showPager={true}
+              showArrows={false}
+              backgroundMode="none"
+              surfaceColor="#ffffff"
+              frameColor="#ffffff"
+              panelShadow="0px 20px 50px rgba(0, 0, 0, 0.08)"
+              creditStyle="marker"
+              creditAccent="#e3ff8f"
+              creditLine="rgba(34, 36, 42, 0.1)"
+              chipColor="#f2f3f3"
+              accentColor="#22242a"
+              dotColor="rgba(34, 36, 42, 0.2)"
+              metricColor="#22242a"
+              quoteColor="#22242a"
+              nameColor="#22242a"
+              roleColor="#415762"
+              metricFont={{
+                fontFamily: 'Onest, Inter, sans-serif',
+                fontSize: '40px',
+                fontWeight: 700,
+                letterSpacing: '-0.02em',
+                lineHeight: '1.1em'
+              }}
+              quoteFont={{
+                fontFamily: 'Onest, Inter, sans-serif',
+                fontSize: '24px',
+                fontWeight: 400,
+                letterSpacing: '-0.01em',
+                lineHeight: '1.35em'
+              }}
+              nameFont={{
+                fontFamily: 'Onest, Inter, sans-serif',
+                fontSize: '16px',
+                fontWeight: 600,
+                lineHeight: '1.3em'
+              }}
+              roleFont={{
+                fontFamily: 'Onest, Inter, sans-serif',
+                fontSize: '14px',
+                fontWeight: 400,
+                lineHeight: '1.3em'
+              }}
+              style={{ width: '100%', height: '100%' }}
+            />
+          </div>
         </div>
 
         {/* Métriques d'impact et de confiance épurées directement sur le fond */}
@@ -127,3 +198,5 @@ export const SocialProof: React.FC = () => {
     </section>
   );
 };
+
+export default SocialProof;

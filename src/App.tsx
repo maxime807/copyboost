@@ -26,7 +26,7 @@ export const App: React.FC = () => {
         {/* 1. Header / Navbar */}
         <Navbar onOpenTrial={scrollToSupport} />
 
-        {/* 2. Main Content Sections (5 sections au total) */}
+        {/* 2. Main Content Sections */}
         <main className="flex-1">
           <Hero onStartFree={scrollToSupport} />
           <LogoTicker />
