@@ -1,8 +1,10 @@
 import React from 'react';
 import { X, ShieldCheck } from 'lucide-react';
 
+import { LegalModalType } from '../types';
+
 interface LegalModalProps {
-  type: 'mentions' | 'confidentialite' | null;
+  type: LegalModalType;
   onClose: () => void;
 }
 

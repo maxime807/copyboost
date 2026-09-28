@@ -8,9 +8,10 @@ import { SocialProof } from './components/SocialProof';
 import { ContactSupport } from './components/ContactSupport';
 import { Footer } from './components/Footer';
 import { LegalModal } from './components/LegalModal';
+import { LegalModalType } from './types';
 
 export const App: React.FC = () => {
-  const [legalModalType, setLegalModalType] = useState<'mentions' | 'confidentialite' | null>(null);
+  const [legalModalType, setLegalModalType] = useState<LegalModalType>(null);
 
   const scrollToSupport = () => {
     const el = document.getElementById('support');

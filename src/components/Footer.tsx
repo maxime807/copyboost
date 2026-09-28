@@ -1,7 +1,7 @@
-import React from 'react';
+import { LegalModalType } from '../types';
 
 interface FooterProps {
-  onOpenLegal: (type: 'mentions' | 'confidentialite') => void;
+  onOpenLegal: (type: NonNullable<LegalModalType>) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {

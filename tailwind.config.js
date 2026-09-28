@@ -7,14 +7,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        limeAccent: "#e3ff8f",
+        limeAccent: "var(--remote-accent-lime, #e3ff8f)",
         limeSoft: "#f3fee2",
-        remoteDark: "#22242a",
-        remoteMuted: "#415762",
-        remoteSubtle: "#b3bdbd",
-        remoteBorder: "#e5e6e6",
-        remoteSurface: "#f2f3f3",
-        remoteBg: "#f7f8f8",
+        remoteDark: "var(--remote-text, #22242a)",
+        remoteMuted: "var(--remote-muted, #415762)",
+        remoteSubtle: "var(--remote-subtle, #b3bdbd)",
+        remoteBorder: "var(--remote-border, #e5e6e6)",
+        remoteSurface: "var(--remote-surface, #f2f3f3)",
+        remoteBg: "var(--remote-bg, #f7f8f8)",
       },
       fontFamily: {
         sans: ['Onest', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
