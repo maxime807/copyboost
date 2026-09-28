@@ -1,0 +1,14 @@
+:root {
+  /* Tokens Remote Framer */
+  --remote-bg: #f7f8f8;
+  --remote-card-bg: #ffffff;
+  --remote-text: #22242a;
+  --remote-muted: #415762;
+  --remote-subtle: #b3bdbd;
+  --remote-border: #e5e6e6;
+  --remote-surface: #f2f3f3;
+  --remote-accent-lime: #e3ff8f;
+  --remote-accent-green: #37955b;
+  --remote-accent-blue: #25c5fa;
+  --remote-accent-red: #ee4444;
+}
