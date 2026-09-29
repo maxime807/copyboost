@@ -11,7 +11,6 @@ interface NavbarProps {
 const NAV_ITEMS = [
   { label: 'Accueil', href: '#top' },
   { label: 'Services', href: '#fonctionnalites' },
-  { label: 'Tarifs', href: '#tarifs' },
   { label: 'Avis', href: '#temoignages' },
   { label: 'Support', href: '#support' },
 ];
@@ -122,16 +121,6 @@ export const Navbar: React.FC<NavbarProps> = () => {
             className="block px-3 py-2 rounded-xl text-sm font-medium text-zinc-700 hover:bg-zinc-100"
           >
             Services
-          </a>
-          <a
-            href="#tarifs"
-            onClick={() => {
-              setMobileMenuOpen(false);
-              lockScrollTracking('tarifs');
-            }}
-            className="block px-3 py-2 rounded-xl text-sm font-medium text-zinc-700 hover:bg-zinc-100"
-          >
-            Tarifs
           </a>
           <a
             href="#temoignages"

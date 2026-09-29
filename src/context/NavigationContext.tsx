@@ -1,19 +1,18 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-export type NavSection = 'top' | 'fonctionnalites' | 'tarifs' | 'temoignages' | 'support';
+export type NavSection = 'top' | 'fonctionnalites' | 'temoignages' | 'support';
 
 export interface SectionMeta {
   id: NavSection;
   pillLabel: string;
-  lineVariant: string; // "1", "2", "3", "4", "5"
+  lineVariant: string;
 }
 
 export const SECTIONS: SectionMeta[] = [
   { id: 'top', pillLabel: 'Accueil', lineVariant: '1' },
   { id: 'fonctionnalites', pillLabel: 'Services', lineVariant: '2' },
-  { id: 'tarifs', pillLabel: 'Tarifs', lineVariant: '3' },
-  { id: 'temoignages', pillLabel: 'Avis', lineVariant: '4' },
-  { id: 'support', pillLabel: 'Support', lineVariant: '5' },
+  { id: 'temoignages', pillLabel: 'Avis', lineVariant: '3' },
+  { id: 'support', pillLabel: 'Support', lineVariant: '4' },
 ];
 
 interface NavigationContextType {
@@ -35,7 +34,6 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     if (manualLockTimeoutRef.current) {
       clearTimeout(manualLockTimeoutRef.current);
     }
-    // Verrouille la détection pendant la durée de la transition de scroll
     manualLockTimeoutRef.current = window.setTimeout(() => {
       manualLockTimeoutRef.current = null;
     }, 1200);
@@ -43,26 +41,22 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
 
   useEffect(() => {
     const handleScroll = () => {
-      // Si un scroll vers une cible est en cours suite à un clic, ne pas perturber
       if (manualLockTimeoutRef.current !== null) {
         return;
       }
 
-      const scrollPosition = window.scrollY + 200; // Offset pour anticipation visuelle naturelle
+      const scrollPosition = window.scrollY + 200;
 
-      // Si on est tout en haut
       if (window.scrollY < 120) {
         setActiveSection('top');
         return;
       }
 
-      // Si on est en bas de page (section support)
       if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
         setActiveSection('support');
         return;
       }
 
-      // Détecter la section courante
       for (let i = SECTIONS.length - 1; i >= 0; i--) {
         const section = SECTIONS[i];
         const el = document.getElementById(section.id);
@@ -77,7 +71,6 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Déclenchement initial
     handleScroll();
 
     return () => {
