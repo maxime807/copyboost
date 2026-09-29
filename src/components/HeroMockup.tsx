@@ -13,6 +13,7 @@ import {
   TrendingUp
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { LogoIcon } from './Logo';
 
 interface ArticleRow {
   id: string;
@@ -178,8 +179,8 @@ export const HeroMockup: React.FC = () => {
       <div className="flex items-center justify-between border-b border-remoteBorder/80 pb-4 mb-5 px-2">
         {/* Logo CopyBoost + Icones de navigation */}
         <div className="flex items-center gap-4 sm:gap-6">
-          <div className="w-8 h-8 rounded-xl bg-remoteDark flex items-center justify-center text-white font-bold text-xs shadow-xs">
-            <span className="text-limeAccent">C</span>B
+          <div className="w-8 h-8 rounded-xl bg-remoteDark flex items-center justify-center text-white shadow-xs">
+            <LogoIcon className="w-4 h-4 text-white" />
           </div>
           <div className="hidden sm:flex items-center gap-4 text-remoteMuted">
             <button className="p-1 hover:text-remoteDark transition-colors">

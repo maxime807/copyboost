@@ -9,7 +9,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onStartFree }) => {
   return (
-    <section className="relative overflow-hidden pt-14 pb-20 md:pt-24 md:pb-28 bg-remoteBg bg-dot-grid">
+    <section id="top" className="relative overflow-hidden pt-14 pb-20 md:pt-24 md:pb-28 bg-remoteBg bg-dot-grid">
       {/* Halo subtil */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-gradient-to-tr from-limeAccent/25 to-limeSoft blur-3xl pointer-events-none rounded-full" />
 

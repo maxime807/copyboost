@@ -26,3 +26,6 @@ dist-ssr
 # Environment & secrets
 .env*
 !.env.example
+
+# Showroom Live Reference (auto-ignored, do not commit)
+.antigravity-live-action.json

@@ -13,7 +13,7 @@ export const ContactSupport: React.FC = () => {
   };
 
   return (
-    <section id="support" className="py-24 bg-white bg-dot-grid relative overflow-hidden border-t border-remoteBorder">
+    <section id="support" className="py-24 bg-white bg-dot-grid relative overflow-hidden border-t border-remoteBorder w-full">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         
         {/* Label pilule en sur-titre à la place de l'icône de messagerie */}

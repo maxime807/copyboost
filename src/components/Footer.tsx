@@ -1,4 +1,5 @@
 import { LegalModalType } from '../types';
+import { Logo } from './Logo';
 
 interface FooterProps {
   onOpenLegal: (type: NonNullable<LegalModalType>) => void;
@@ -14,11 +15,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
           
           {/* Marque */}
           <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center text-white font-bold text-sm">
-                <span className="text-[#d2f831]">C</span>B
-              </div>
-              <span className="font-bold text-lg text-zinc-900 tracking-tight">CopyBoost</span>
+            <div className="mb-4">
+              <Logo size="sm" />
             </div>
             <p className="text-sm text-zinc-500 leading-relaxed pr-4">
               La plateforme IA qui démultiplie l'impact éditorial des créateurs, blogueurs et équipes marketing.

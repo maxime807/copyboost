@@ -1,118 +1,158 @@
 import React, { useState } from 'react';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { LogoIcon } from './Logo';
+import FloatingPillNavigation from './floating-pill-nav/FloatingPillNavigation';
+import { useNavigation } from '../context/NavigationContext';
 
 interface NavbarProps {
   onOpenTrial?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenTrial }) => {
+const NAV_ITEMS = [
+  { label: 'Accueil', href: '#top' },
+  { label: 'Services', href: '#fonctionnalites' },
+  { label: 'Tarifs', href: '#tarifs' },
+  { label: 'Avis', href: '#temoignages' },
+  { label: 'Support', href: '#support' },
+];
+
+export const Navbar: React.FC<NavbarProps> = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { activePillLabel, lockScrollTracking } = useNavigation();
+
+  const handleNavigate = (_label: string, href?: string) => {
+    if (href && href.startsWith('#')) {
+      const sectionId = href === '#top' ? 'top' : (href.replace('#', '') as any);
+      lockScrollTracking(sectionId);
+    }
+  };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-zinc-100 transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-white font-bold text-lg shadow-sm group-hover:scale-105 transition-transform">
-              <span className="text-[#d2f831]">C</span>B
+    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none transition-all">
+      {/* Container global centré */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2 flex justify-center">
+        
+        {/* Barre Pilule Unique Unifiée & Épurée (Desktop) */}
+        <div className="hidden md:inline-flex items-center gap-1.5 p-1.5 pl-2 pr-2 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200/90 shadow-sm pointer-events-auto">
+          {/* 1. Logo & Titre intégrés à gauche */}
+          <a
+            href="#top"
+            onClick={() => lockScrollTracking('top')}
+            className="flex items-center gap-2 pl-2 pr-3 py-1 rounded-full hover:bg-zinc-100/70 transition-colors group"
+          >
+            <div className="w-7 h-7 rounded-lg bg-zinc-950 text-white flex items-center justify-center transition-transform group-hover:scale-105">
+              <LogoIcon className="w-3.5 h-3.5" />
             </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-xl tracking-tight text-zinc-900 flex items-center gap-1.5">
-                CopyBoost
-                <span className="w-2 h-2 rounded-full bg-[#d2f831]"></span>
-              </span>
-              <span className="text-[10px] uppercase font-semibold tracking-wider text-zinc-400 -mt-1">
-                AI Content Engine
-              </span>
-            </div>
+            <span className="font-bold text-sm tracking-tight text-zinc-950 flex items-center gap-1">
+              CopyBoost
+              <span className="w-1.5 h-1.5 rounded-full bg-[#d2f831]"></span>
+            </span>
           </a>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-600">
-            <a 
-              href="#fonctionnalites" 
-              className="hover:text-zinc-900 transition-colors"
-            >
-              Fonctionnalités
-            </a>
-            <a 
-              href="#temoignages" 
-              className="hover:text-zinc-900 transition-colors"
-            >
-              Témoignages
-            </a>
-            <a 
-              href="#support" 
-              className="hover:text-zinc-900 transition-colors"
-            >
-              Support & Contact
-            </a>
-          </nav>
+          {/* Délimiteur vertical discret */}
+          <div className="h-4 w-px bg-zinc-200 mx-1" />
 
-          {/* Action CTA */}
-          <div className="hidden md:flex items-center gap-4">
-            <a
-              href="#cta-section"
-              onClick={onOpenTrial}
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-medium bg-zinc-900 text-white hover:bg-zinc-800 active:scale-95 transition-all shadow-sm group"
-            >
-              <span>Essayer gratuitement</span>
-              <ArrowUpRight className="w-4 h-4 ml-1.5 opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
-          </div>
-
-          {/* Mobile hamburger menu */}
-          <div className="flex md:hidden">
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-zinc-700 hover:text-zinc-900 hover:bg-zinc-100 transition-colors"
-              aria-label="Menu principal"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+          {/* 2. Menu Links flottants animés */}
+          <FloatingPillNavigation
+            items={NAV_ITEMS}
+            activeLink={activePillLabel}
+            onNavigate={handleNavigate}
+            backgroundColor="transparent"
+            textColor="#52525b"
+            activeBackgroundColor="#18181b"
+            activeTextColor="#ffffff"
+            padding={2}
+            gap={2}
+            linkPadding="6px 16px"
+            font={{
+              fontSize: '13.5px',
+              fontWeight: 500,
+              letterSpacing: '-0.2px',
+            }}
+          />
         </div>
+
+        {/* Mobile top bar (Compact) */}
+        <div className="flex md:hidden w-full items-center justify-between pointer-events-auto">
+          <a
+            href="#top"
+            onClick={() => lockScrollTracking('top')}
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200/80 shadow-xs"
+          >
+            <div className="w-6 h-6 rounded-md bg-zinc-950 text-white flex items-center justify-center">
+              <LogoIcon className="w-3 h-3" />
+            </div>
+            <span className="font-bold text-xs tracking-tight text-zinc-950 flex items-center gap-1">
+              CopyBoost
+              <span className="w-1.5 h-1.5 rounded-full bg-[#d2f831]"></span>
+            </span>
+          </a>
+
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200/80 shadow-xs text-zinc-700 hover:text-zinc-900 transition-colors"
+            aria-label="Menu principal"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
+
       </div>
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-zinc-200 bg-white px-4 pt-3 pb-6 space-y-3">
+        <div className="md:hidden pointer-events-auto mx-4 mt-2 p-4 rounded-2xl border border-zinc-200/90 bg-white/95 backdrop-blur-xl shadow-xl space-y-2">
+          <a
+            href="#top"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              lockScrollTracking('top');
+            }}
+            className="block px-3 py-2 rounded-xl text-sm font-medium text-zinc-700 hover:bg-zinc-100"
+          >
+            Accueil
+          </a>
           <a
             href="#fonctionnalites"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-base font-medium text-zinc-700 hover:bg-zinc-50"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              lockScrollTracking('fonctionnalites');
+            }}
+            className="block px-3 py-2 rounded-xl text-sm font-medium text-zinc-700 hover:bg-zinc-100"
           >
-            Fonctionnalités
+            Services
+          </a>
+          <a
+            href="#tarifs"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              lockScrollTracking('tarifs');
+            }}
+            className="block px-3 py-2 rounded-xl text-sm font-medium text-zinc-700 hover:bg-zinc-100"
+          >
+            Tarifs
           </a>
           <a
             href="#temoignages"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-base font-medium text-zinc-700 hover:bg-zinc-50"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              lockScrollTracking('temoignages');
+            }}
+            className="block px-3 py-2 rounded-xl text-sm font-medium text-zinc-700 hover:bg-zinc-100"
           >
-            Témoignages
+            Avis
           </a>
           <a
             href="#support"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-base font-medium text-zinc-700 hover:bg-zinc-50"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              lockScrollTracking('support');
+            }}
+            className="block px-3 py-2 rounded-xl text-sm font-medium text-zinc-700 hover:bg-zinc-100"
           >
             Support & Contact
           </a>
-          <div className="pt-2">
-            <a
-              href="#cta-section"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                if (onOpenTrial) onOpenTrial();
-              }}
-              className="w-full inline-flex items-center justify-center px-5 py-3 rounded-xl text-sm font-medium bg-zinc-900 text-white"
-            >
-              Essayer gratuitement
-            </a>
-          </div>
         </div>
       )}
     </header>

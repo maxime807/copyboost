@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 
 export const Features: React.FC = () => {
   return (
-    <section id="fonctionnalites" className="py-24 bg-white border-t border-remoteBorder">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="fonctionnalites" className="py-24 bg-white border-t border-remoteBorder w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-20 2xl:px-12">
         
         {/* En-tête de section inspiré de la capture Remote */}
         <div className="max-w-3xl mb-16">

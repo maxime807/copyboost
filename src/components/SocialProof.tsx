@@ -68,8 +68,8 @@ const COPYBOOST_STORIES = [
 
 export const SocialProof: React.FC = () => {
   return (
-    <section id="temoignages" className="py-24 bg-remoteBg border-t border-remoteBorder overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="temoignages" className="py-24 bg-remoteBg border-t border-remoteBorder overflow-hidden w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-20 2xl:px-12">
         
         {/* Titre & métriques de réassurance */}
         <div className="text-center max-w-3xl mx-auto mb-12">

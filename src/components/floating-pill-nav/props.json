@@ -1,0 +1,166 @@
+{
+  "showcase_props": {
+    "activeBackgroundColor": "rgb(29, 29, 31)",
+    "activeLink": "All products",
+    "activeTextColor": "rgb(255, 255, 255)",
+    "backgroundColor": "rgb(232, 232, 237)",
+    "font": {
+      "fontFamily": "\"Inter\", \"Inter Placeholder\", sans-serif",
+      "fontSize": "17px",
+      "fontStyle": "normal",
+      "fontWeight": 400,
+      "letterSpacing": "-0.37px",
+      "lineHeight": "20px"
+    },
+    "gap": 0,
+    "height": "100%",
+    "id": "gZnh4NZyT",
+    "items": [
+      {
+        "href": "",
+        "label": "All products",
+        "target": "_self"
+      },
+      {
+        "href": "",
+        "label": "Laptops",
+        "target": "_self"
+      },
+      {
+        "href": "",
+        "label": "Desktops",
+        "target": "_self"
+      },
+      {
+        "href": "",
+        "label": "Displays",
+        "target": "_self"
+      }
+    ],
+    "layoutId": "gZnh4NZyT",
+    "linkPadding": "12px 22px 12px 22px",
+    "padding": 6,
+    "textColor": "rgb(0, 0, 0)",
+    "transition": {
+      "damping": 60,
+      "delay": 0,
+      "mass": 1,
+      "stiffness": 800,
+      "type": "spring"
+    },
+    "width": "100%"
+  },
+  "controls_schema": {
+    "activeLink": {
+      "type": "String",
+      "title": "Active Link",
+      "defaultValue": "All products",
+      "description": "Enter the label of the link you want to be active initially"
+    },
+    "transition": {
+      "type": "Transition",
+      "title": "Transition",
+      "defaultValue": {
+        "type": "spring",
+        "stiffness": 800,
+        "damping": 60,
+        "mass": 1
+      }
+    },
+    "linkPadding": {
+      "title": "Link Padding",
+      "defaultValue": "12px 22px 12px 22px"
+    },
+    "items": {
+      "type": "Array",
+      "control": {
+        "type": "Object",
+        "controls": {
+          "label": {
+            "type": "String",
+            "defaultValue": "Link"
+          },
+          "href": {
+            "type": "String",
+            "title": "Link To",
+            "placeholder": "/page or #section",
+            "description": "Optional: Link to a page or section"
+          },
+          "target": {
+            "type": "Enum",
+            "title": "Open In",
+            "options": [
+              "_self",
+              "_blank"
+            ],
+            "optionTitles": [
+              "Same Tab",
+              "New Tab"
+            ],
+            "defaultValue": "_self"
+          }
+        }
+      },
+      "defaultValue": [
+        {
+          "label": "All products"
+        },
+        {
+          "label": "Laptops"
+        },
+        {
+          "label": "Desktops"
+        },
+        {
+          "label": "Displays"
+        }
+      ]
+    },
+    "backgroundColor": {
+      "type": "Color",
+      "defaultValue": "#E8E8ED"
+    },
+    "textColor": {
+      "type": "Color",
+      "defaultValue": "#000000",
+      "title": "Inactive Text"
+    },
+    "activeBackgroundColor": {
+      "type": "Color",
+      "defaultValue": "#1D1D1F",
+      "title": "Active BG"
+    },
+    "activeTextColor": {
+      "type": "Color",
+      "defaultValue": "#FFFFFF",
+      "title": "Active Text"
+    },
+    "padding": {
+      "type": "Number",
+      "defaultValue": 6,
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px"
+    },
+    "gap": {
+      "type": "Number",
+      "defaultValue": 0,
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px"
+    },
+    "font": {
+      "type": "Font",
+      "controls": "extended",
+      "defaultFontType": "sans-serif",
+      "defaultValue": {
+        "fontSize": "17px",
+        "variant": "Regular",
+        "letterSpacing": "-0.37px",
+        "lineHeight": "20px"
+      }
+    }
+  }
+}
